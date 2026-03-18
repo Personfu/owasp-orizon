@@ -48,8 +48,9 @@
           </execution>
         </executions>
         <configuration>
-          <docheck>true</docheck>
-          <doupdate>true</doupdate>
+          <docheck>false</docheck>
+          <doupdate>false</doupdate>
+          <revisionOnScmFailure>UNKNOWN_BRANCH</revisionOnScmFailure>
 
           <format>{0,number}</format>
           <items>
