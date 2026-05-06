@@ -1,0 +1,16 @@
+{
+  "name": "owasp-orizon-api",
+  "version": "1.0.0",
+  "description": "REST API wrapper for OWASP Orizon static analysis engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
