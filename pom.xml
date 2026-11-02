@@ -6,6 +6,12 @@
   <packaging>jar</packaging>
   <version>1.99</version>
   <name>owasp-orizon</name>
+  <properties>
+    <log4j2.version>2.26.1</log4j2.version>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <url>http://maven.apache.org</url>
 
   <licenses>
@@ -114,12 +120,12 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.6.2</version>
+      <version>${log4j2.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.6.2</version>
+      <version>${log4j2.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
