@@ -61,3 +61,22 @@ java -Dlog4j.configurationFile=./log4j2.xml -jar target/owasp-orizon-1.0-SNAPSHO
 ## The overall design
 
 _To be written_
+
+## Logging security maintenance
+
+The application's own logging dependencies previously used Log4j 2.6.2. These
+are runtime dependencies of the analyzer, not intentionally vulnerable target
+fixtures. Both `log4j-api` and `log4j-core` now share version 2.26.1 through one
+Maven property. This removes the affected Log4Shell versions tracked by
+CVE-2021-44228 and CVE-2021-45046 in CISA's Known Exploited Vulnerabilities catalog.
+
+Build with Java 8 or later and `mvn verify`. Check `mvn dependency:tree
+-Dincludes=org.apache.logging.log4j` and the packaged JAR before replacing an
+installed analyzer; old downloaded JARs are not updated by this source change.
+CI builds the project on Java 8 and Java 17. The existing test is only a smoke
+test; it does not establish comprehensive analysis or archive-parsing safety.
+Other old dependencies and the unpacking/analysis code still require review.
+
+Sources: [Apache Log4j security advisories](https://logging.apache.org/security.html),
+[Log4j releases](https://logging.apache.org/log4j/2.x/release-notes.html), and
+[CISA KEV data](https://github.com/cisagov/kev-data).
