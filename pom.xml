@@ -74,7 +74,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>2.3</version>
+        <version>3.6.2</version>
         <executions>
           <!-- Run shade goal on package phase -->
           <execution>
@@ -83,6 +83,16 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
                 </transformer>
@@ -93,8 +103,8 @@
                 </transformer>
                 <!-- add Main-Class to manifest file -->
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>org.owasp.orizon.App</mainClass>
                   <manifestEntries>
-                    <Main-Class>org.owasp.orizon.App</Main-Class>
                     <Package-Version>${project.version}</Package-Version>
                     <Specification-Version>${project.version}</Specification-Version>
                     <Implementation-Version>${buildNumber}</Implementation-Version>
